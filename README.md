@@ -3,6 +3,10 @@
 Aplicación de chat mínima con arquitectura **MVC + Observer**, usada en la
 Tarea 2 (Clean Code) del curso Ingeniería de Software (MCD, PUC).
 
+## Alumno
+Alumno: Gonzalo Eduardo Gálvez Bobadilla
+Asignatura: Ingeniería de Software
+
 ## Instalación (Windows / macOS / Linux)
 
 ```bash
