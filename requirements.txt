@@ -1,0 +1,7 @@
+# Mínimo para correr la app con el backend "echo" (sin modelos):
+jupyterlab
+ipywidgets>=8
+# Opcional, solo para el backend "DialoGPT-medium":
+# torch
+# transformers
+# accelerate
