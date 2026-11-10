@@ -8,12 +8,6 @@ from minichat.controller.chat_controller import ChatController
 from minichat.model.role import Role
 
 
-def _last_assistant_text(session: ChatSession) -> str | None:
-    """Return the content of the most recent assistant message, if any."""
-    for m in reversed(session.all()):
-        if m.role == Role.ASSISTANT:
-            return m.content
-    return None
 
 
 def main(backend_name: str = "echo") -> None:
@@ -33,7 +27,7 @@ def main(backend_name: str = "echo") -> None:
         except Exception as e:
             print(f"[backend error] {e}")
             continue
-        reply = _last_assistant_text(session) or "(no reply)"
+        reply = session.last_assistant_text() or "(no reply)"
         print("Bot:", reply)
 
 
