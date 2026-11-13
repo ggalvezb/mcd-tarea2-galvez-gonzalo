@@ -76,14 +76,6 @@ class DialoGPTBackend:
         )
         return ids.to(self._device)
     
-    def _encode_system_message(self, text: str) -> torch.Tensor:
-        """Encode a system message with the [SYS] prefix."""
-        system_text = f"[SYS] {text}"
-        encoded = self._tok.encode(
-            system_text + (self._tok.eos_token or ""),
-            return_tensors="pt",
-        )
-        return encoded.to(self._device)
 
     def _build_ctx(self, session: ChatSession, max_ctx: int) -> torch.Tensor:
         """Concatenate all turns into a single input, clipped to max_ctx.

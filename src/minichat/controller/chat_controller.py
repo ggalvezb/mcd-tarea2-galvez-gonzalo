@@ -144,17 +144,10 @@ class ChatController(Observable):
         self._session.clear()
         self._notify(Event.MESSAGES_UPDATED, {})
 
-    def get_observer_count(self) -> int:
-        """Return the number of subscribed observers."""
-        return len(self._observers)
-
-    def has_observers(self) -> bool:
-        """Check if there are any subscribed observers."""
-        return len(self._observers) > 0
 
     def export_json(self, path: str = "chat_transcript.json") -> None:
         """Export the conversation transcript as JSON."""
-        data = self._session.get_summary()
+        data = self._session.as_public()
         with open(path, "w", encoding="utf-8") as fh:
             json.dump(data, fh, ensure_ascii=False, indent=2)
         self._notify(Event.EXPORT_DONE, {"path": path})
